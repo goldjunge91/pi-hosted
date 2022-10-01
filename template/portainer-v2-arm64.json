@@ -6,7 +6,7 @@
 				"Other",
 				"Tools"
 			],
-			"description": "[Adguardhome](https://adguard.com/en/adguard-home/overview.html) AdGuard Home is a network-wide software for blocking ads & tracking.",
+			"description": "AdGuard Home is a network-wide software for blocking ads & tracking.",
 			"image": "adguard/adguardhome:latest",
 			"logo": "https://developer.asustor.com/uploadIcons/0020_999_1595573028_AdGuardhome_256.png",
 			"name": "Adguardhome",
@@ -926,6 +926,31 @@
 			"title": "Cloudflare DDNS",
 			"type": 1,
 			"note": "<h3>Template created by Pi-Hosted Series</h3><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://www.cloudflare.com/en-gb/learning/dns/glossary/dynamic-dns/\" target=\"_blank\">https://www.cloudflare.com/en-gb/learning/dns/glossary/dynamic-dns/</a><br><b>Official Docker Documentation: </b><a href=\"https://github.com/favonia/cloudflare-ddns/\" target=\"_blank\">https://github.com/favonia/cloudflare-ddns/</a><br><br><br>"
+		},
+		{
+			"categories": [
+				"Other",
+				"Tools",
+				"VPN",
+				"Proxy"
+			],
+			"description": "Cloudflare Tunnel provides you with a secure way to connect your resources to Cloudflare without a publicly routable IP address. With Tunnel, you do not send traffic to an external IP — instead, a lightweight daemon in your infrastructure (cloudflared) creates outbound-only connections to Cloudflare's edge.",
+			"env": [
+				{
+					"default": "Your_Tunnel_Token_From_The_Zero_Dashboard_Access_Tunnel",
+					"label": "token",
+					"name": "TUNNEL_TOKEN"
+				}
+			],
+			"image": "cloudflare/cloudflared:latest",
+			"logo": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/cloudflared.svg",
+			"name": "cloudflared-tunnel",
+			"note": "<h3>Template created by Pi-Hosted Series</h3><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://www.cloudflare.com/products/tunnel/\" target=\"_blank\">https://www.cloudflare.com/products/tunnel/</a><br><b>Official Docker Documentation: </b><a href=\"https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/\" target=\"_blank\">https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/</a><br><br><br>Requires a token in order to work. You can find the dashboard <a href='https://dash.teams.cloudflare.com/'>here</a>. Once you logged in, go to Access followed by Tunnels. Create a tunnel. After you gave it a name you'll see in the command section a long string of chacters. This is your token you must copy.",
+			"platform": "linux",
+			"command": "tunnel run",
+			"restart_policy": "unless-stopped",
+			"title": "Cloudflared Tunnel",
+			"type": 1
 		},
 		{
 			"categories": [
@@ -5412,6 +5437,41 @@
 		},
 		{
 			"categories": [
+				"Other"
+			],
+			"description": "Wireless control of PixelStrips or NeoPixels using a web graphical interface running on a Raspberry Pi.",
+			"image": "macley/pixel-server:latest",
+			"logo": "https://lirp.cdn-website.com/c73f56a6/dms3rep/multi/opt/ir.appnice.controlpad_512x512-640w.png",
+			"name": "pixel-server",
+			"platform": "linux",
+			"ports": [
+				"85:80/tcp"
+			],
+			"restart_policy": "unless-stopped",
+			"title": "Pixel-server",
+			"type": 1,
+			"volumes": [
+				{
+					"bind": "/portainer/Files/AppData/Config/pixel-server/auth.cfg",
+					"container": "/opt/pixel-server/auth.cfg"
+				},
+				{
+					"bind": "/portainer/Files/AppData/Config/pixel-server/pixelserver.cfg",
+					"container": "/opt/pixel-server/pixelserver.cfg"
+				},
+				{
+					"bind": "/portainer/Files/AppData/Config/pixel-server/users.cfg",
+					"container": "/opt/pixel-server/users.cfg"
+				},
+				{
+					"container": "/etc/crontabs/"
+				}
+			],
+			"privileged": true,
+			"note": "<h3>Template created by Pi-Hosted Series</h3><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"http://www.penguintutor.com/projects/pixel-server\" target=\"_blank\">http://www.penguintutor.com/projects/pixel-server</a><br><b>Official Docker Documentation: </b><a href=\"https://github.com/Macleykun/pixel-server\" target=\"_blank\">https://github.com/Macleykun/pixel-server</a><br><b>Pi-Hosted dedicated documentation: </b><a href=\"https://github.com/pi-hosted/pi-hosted/blob/master/docs/pixel-server_setup.md\" target=\"_blank\">pixel-server_setup.md</a><br><br><b><a href=\"https://github.com/pi-hosted/pi-hosted/blob/master/tools/install_pixel-server.sh\" target=\"_blank\">Pre-installation script</a> must be RAN before you install: </b>wget -qO- https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/tools/install_pixel-server.sh | bash<br><br>"
+		},
+		{
+			"categories": [
 				"Video",
 				"Music",
 				"Photos"
@@ -6723,11 +6783,29 @@
 			"image": "surrealdb/surrealdb:latest",
 			"logo": "",
 			"name": "SurrealDB",
+			"env": [
+				{
+					"default": "default_username",
+					"label": "SDB_USERNAME",
+					"name": "SDB_USERNAME"
+				},
+				{
+					"default": "default_password",
+					"label": "SDB_PASSWORD",
+					"name": "SDB_PASSWORD"
+				}
+			],
 			"platform": "linux",
 			"ports": [
 				"8020:8000/tcp"
 			],
-			"command": "start",
+			"command": "start --user ${SDB_USERNAME} --pass ${SDB_PASSWORD} file:/data/database.db",
+			"volumes": [
+				{
+					"bind": "/portainer/Files/AppData/Config/surrealdb/data",
+					"container": "/data"
+				}
+			],
 			"restart_policy": "unless-stopped",
 			"title": "SurrealDB",
 			"type": 1,
@@ -6775,6 +6853,45 @@
 				}
 			],
 			"note": "<h3>Template created by Pi-Hosted Series</h3><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://syncthing.net/\" target=\"_blank\">https://syncthing.net/</a><br><b>Official Docker Documentation: </b><a href=\"https://docs.linuxserver.io/images/docker-syncthing\" target=\"_blank\">https://docs.linuxserver.io/images/docker-syncthing</a><br><br><br>"
+		},
+		{
+			"categories": [
+				"Monitor",
+				"Other"
+			],
+			"description": "A quick way to display system stats on a 128x64 I2C OLED display.",
+			"env": [
+				{
+					"default": "8",
+					"label": "start displaying screen",
+					"name": "start"
+				},
+				{
+					"default": "23",
+					"label": "end displaying screen",
+					"name": "end"
+				}
+			],
+			"note": "<h3>Template created by Pi-Hosted Series</h3><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://www.the-diy-life.com/\" target=\"_blank\">https://www.the-diy-life.com/</a><br><b>Official Docker Documentation: </b><a href=\"https://github.com/mklements/OLED_Stats_Docker\" target=\"_blank\">https://github.com/mklements/OLED_Stats_Docker</a><br><br><br>Run this command first to enable is2 communication! sudo raspi-config nonint do_i2c 0",
+			"image": "macley/oled_stats:latest",
+			"logo": "https://camo.githubusercontent.com/4cf4aaa1e53612347e4d48f152d6d4eea0ce93a6ecacacaa9d44061d0994b408/68747470733a2f2f7777772e7468652d6469792d6c6966652e636f6d2f77702d636f6e74656e742f75706c6f6164732f323032322f30392f3138373137323831322d64653264653635632d626433302d343065372d613835322d3264343234656463323761622e6a7067",
+			"name": "OLED_Stats",
+			"platform": "linux",
+			"restart_policy": "unless-stopped",
+			"title": "System Stats OLED display",
+			"type": 1,
+			"volumes": [
+				{
+					"bind": "/etc/timezone",
+					"container": "/etc/timezone"
+				},
+				{
+					"bind": "/etc/localtime",
+					"container": "/etc/localtime"
+				}
+			],
+			"network": "host",
+			"privileged": true
 		},
 		{
 			"categories": [
@@ -7523,6 +7640,7 @@
 			"name": "watchtower",
 			"note": "<h3>Template created by Pi-Hosted Series</h3><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://containrrr.dev/watchtower/\" target=\"_blank\">https://containrrr.dev/watchtower/</a><br><b>Official Docker Documentation: </b><a href=\"https://containrrr.dev/watchtower/usage-overview/\" target=\"_blank\">https://containrrr.dev/watchtower/usage-overview/</a><br><br><br><b>Youtube Video: </b><a href=https://www.youtube.com/watch?v=q3wKqk8qVS8&list=PL846hFPMqg3jwkxcScD1xw2bKXrJVvarc&index=7 target=\"_blank\">Novaspirit Tech - Upgrading Portainer and Updating Containers</a><br><br>It is recommended to manually update your containers but we're including this for those of you that don't care",
 			"platform": "linux",
+			"command": "--cleanup",
 			"restart_policy": "unless-stopped",
 			"title": "Watchtower",
 			"type": 1,
