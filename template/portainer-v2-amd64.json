@@ -15,11 +15,10 @@
 				"53:53/tcp",
 				"53:53/udp",
 				"67:67/udp",
-				"68:68/udp",
 				"80:80/tcp",
 				"443:443/tcp",
 				"443:443/udp",
-				"3000:3000/tcp",
+				"3001:3000/tcp",
 				"853:853/tcp",
 				"784:784/udp",
 				"853:853/udp",
@@ -292,15 +291,15 @@
 			"type": 1,
 			"volumes": [
 				{
-					"bind": "/portainer/Files/AppData/ArchiSteamFarm/config",
+					"bind": "/portainer/Files/AppData/Config/ArchiSteamFarm/config",
 					"container": "/app/config"
 				},
 				{
-					"bind": "/portainer/Files/AppData/ArchiSteamFarm/plugins",
+					"bind": "/portainer/Files/AppData/Config/ArchiSteamFarm/plugins",
 					"container": "/app/plugins"
 				},
 				{
-					"bind": "/portainer/Files/AppData/ArchiSteamFarm/logs",
+					"bind": "/portainer/Files/AppData/Config/ArchiSteamFarm/logs",
 					"container": "/app/logs"
 				}
 			],
@@ -418,7 +417,7 @@
 			"image": "authelia/authelia:latest",
 			"logo": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/authelia.png",
 			"name": "authelia",
-			"note": "<h3>Template created by Pi-Hosted Series</h3><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://www.authelia.com/\" target=\"_blank\">https://www.authelia.com/</a><br><b>Official Docker Documentation: </b><a href=\"https://www.authelia.com/docs/configuration/\" target=\"_blank\">https://www.authelia.com/docs/configuration/</a><br><br><br>Requires a configuration.yml file in order to work. Documentation is Available <a href='https://docs.authelia.com/deployment/deployment-ha'>here</a>.",
+			"note": "<h3>Template created by Pi-Hosted Series</h3><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://www.authelia.com/\" target=\"_blank\">https://www.authelia.com/</a><br><b>Official Docker Documentation: </b><a href=\"https://www.authelia.com/docs/configuration/\" target=\"_blank\">https://www.authelia.com/docs/configuration/</a><br><br><br>Requires a configuration.yml file in order to work. Documentation is Available <a href='https://www.authelia.com/configuration/prologue/introduction/'>here</a>.",
 			"platform": "linux",
 			"ports": [
 				"9091:9091/tcp"
@@ -635,7 +634,7 @@
 			"categories": [
 				"Wiki"
 			],
-			"description": "Bookstack is a free and open source Wiki designed for creating beautiful documentation. Feautring a simple, but powerful WYSIWYG editor it allows for teams to create detailed and useful documentation with ease.",
+			"description": "Bookstack is a free and open source Wiki designed for creating beautiful documentation. Featuring a simple, but powerful WYSIWYG editor it allows for teams to create detailed and useful documentation with ease.",
 			"env": [
 				{
 					"default": "1000",
@@ -1397,6 +1396,7 @@
 				}
 			],
 			"image": "ebrianne/docker-deluge-openvpn:latest",
+			"logo": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/deluge-icon.png",
 			"name": "deluge-openvpn",
 			"platform": "linux",
 			"ports": [
@@ -1652,33 +1652,33 @@
 				"Other",
 				"Tools"
 			],
-			"description": "Eclipse Mosquitto is an open source implementation of a server for versions 5, 3.1.1, and 3.1 of the MQTT protocol.\r\nYou will need to create /portainer/Files/AppData/Config/Mosquitto/config/mosquitto.conf and if needed your password file.\r\nHave a look on https://mosquitto.org/man/mosquitto_passwd-1.html",
-			"hostname": "rpi-mosquitto",
+			"description": "Eclipse Mosquitto is an open source message broker that implements the MQTT protocol versions 5.0, 3.1.1 and 3.1. Mosquitto is lightweight and is suitable for use on all devices from low power single board computers to full servers.\r\nHave a look on https://mosquitto.org/man/mosquitto_passwd-1.html",
 			"image": "eclipse-mosquitto:latest",
-			"logo": "https://raw.githubusercontent.com/docker-library/docs/757578e3a44e5460a8a11d32a81776f8b74231a9/eclipse-mosquitto/logo.png",
-			"name": "mosquitto",
+			"logo": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/eclipse-mosquitto.png",
+			"name": "eclipse-mosquitto",
 			"platform": "linux",
 			"ports": [
-				"1883:1883/tcp"
+				"1883:1883/tcp",
+				"9001:9001/tcp"
 			],
 			"restart_policy": "unless-stopped",
-			"title": "Eclipse Mosquitto",
+			"title": "Eclipse Mosquitto MQTT",
 			"type": 1,
 			"volumes": [
 				{
-					"bind": "/portainer/Files/AppData/Config/Mosquitto/config",
+					"bind": "/portainer/Files/AppData/Config/eclipse-mosquitto/config",
 					"container": "/mosquitto/config"
 				},
 				{
-					"bind": "/portainer/Files/AppData/Config/Mosquitto/data",
+					"bind": "/portainer/Files/AppData/Config/eclipse-mosquitto/data",
 					"container": "/mosquitto/data"
 				},
 				{
-					"bind": "/portainer/Files/AppData/Config/Mosquitto/log",
+					"bind": "/portainer/Files/AppData/Config/eclipse-mosquitto/log",
 					"container": "/mosquitto/log"
 				}
 			],
-			"note": "<h3>Template created by Pi-Hosted Series</h3><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://mosquitto.org/\" target=\"_blank\">https://mosquitto.org/</a><br><b>Official Docker Documentation: </b><a href=\"https://hub.docker.com/_/eclipse-mosquitto\" target=\"_blank\">https://hub.docker.com/_/eclipse-mosquitto</a><br><br><br>"
+			"note": "<h3>Template created by Pi-Hosted Series</h3><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://mosquitto.org/\" target=\"_blank\">https://mosquitto.org/</a><br><b>Official Docker Documentation: </b><a href=\"https://mosquitto.org/\" target=\"_blank\">https://mosquitto.org/</a><br><br><b><a href=\"https://github.com/pi-hosted/pi-hosted/blob/master/tools/install_mosquitto.sh\" target=\"_blank\">Pre-installation script</a> must be RAN before you install: </b>wget -qO- https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/tools/install_mosquitto.sh | bash<br><br>"
 		},
 		{
 			"categories": [
@@ -1760,17 +1760,17 @@
 				"Other",
 				"Tools"
 			],
-			"description": "[arm] Web File Browser which can be used as a middleware or standalone app.",
+			"description": "Web File Browser which can be used as a middleware or standalone app.",
 			"image": "filebrowser/filebrowser:latest",
 			"logo": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/filebrowser.png",
-			"name": "filebrowser",
+			"name": "filebrowser-latest",
 			"note": "<h3>Template created by Pi-Hosted Series</h3><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://filebrowser.org/\" target=\"_blank\">https://filebrowser.org/</a><br><b>Official Docker Documentation: </b><a href=\"https://filebrowser.org/installation#docker\" target=\"_blank\">https://filebrowser.org/installation#docker</a><br><br><br><b>Youtube Video: </b><a href=https://www.youtube.com/watch?v=30MYRgCObu8&list=PL846hFPMqg3jwkxcScD1xw2bKXrJVvarc&index=4 target=\"_blank\">Novaspirit Tech - Installing JDownloader and File Browser On The Pi Docker Server</a><br><br>The default user and password is admin/admin.",
 			"platform": "linux",
 			"ports": [
 				"8082:80/tcp"
 			],
 			"restart_policy": "unless-stopped",
-			"title": "FileBrowser",
+			"title": "FileBrowser latest",
 			"type": 1,
 			"volumes": [
 				{
@@ -1865,6 +1865,92 @@
 				}
 			],
 			"note": "<h3>Template created by Pi-Hosted Series</h3><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://github.com/pawelmalak/flame\" target=\"_blank\">https://github.com/pawelmalak/flame</a><br><b>Official Docker Documentation: </b><a href=\"https://github.com/pawelmalak/flame#with-docker-recommended\" target=\"_blank\">https://github.com/pawelmalak/flame#with-docker-recommended</a><br><br><br>"
+		},
+		{
+			"categories": [
+				"Other",
+				"Tools"
+			],
+			"description": "FlareSolverr is a proxy server to bypass Cloudflare and DDoS-GUARD protection.",
+			"env": [
+				{
+					"default": "info",
+					"label": "LOG_LEVEL",
+					"name": "LOG_LEVEL"
+				},
+				{
+					"default": "false",
+					"label": "LOG_HTML",
+					"name": "LOG_HTML"
+				},
+				{
+					"default": "none",
+					"label": "CAPTCHA_SOLVER",
+					"name": "CAPTCHA_SOLVER"
+				},
+				{
+					"default": "America/New_York",
+					"label": "TZ",
+					"name": "TZ"
+				}
+			],
+			"image": "ghcr.io/flaresolverr/flaresolverr:latest",
+			"logo": "https://raw.githubusercontent.com/FlareSolverr/FlareSolverr/c48d342b9cfb65d7696b96e9867fcff0ae87a0e2/resources/flaresolverr_logo.svg",
+			"name": "FlareSolverr",
+			"platform": "linux",
+			"ports": [
+				"8191:8191/tcp"
+			],
+			"restart_policy": "unless-stopped",
+			"title": "FlareSolverr",
+			"type": 1,
+			"note": "<h3>Template created by Pi-Hosted Series</h3><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Docker Documentation: </b><a href=\"https://github.com/FlareSolverr/FlareSolverr#installation\" target=\"_blank\">https://github.com/FlareSolverr/FlareSolverr#installation</a><br><br><br>"
+		},
+		{
+			"categories": [
+				"Other",
+				"Tools"
+			],
+			"description": "A distraction-free, database-less note taking app that puts your content first.",
+			"env": [
+				{
+					"default": "password",
+					"label": "FLATNOTES_AUTH_TYPE",
+					"name": "FLATNOTES_AUTH_TYPE"
+				},
+				{
+					"default": "admin",
+					"label": "FLATNOTES_USERNAME",
+					"name": "FLATNOTES_USERNAME"
+				},
+				{
+					"default": "changeme",
+					"label": "FLATNOTES_PASSWORD",
+					"name": "FLATNOTES_PASSWORD"
+				},
+				{
+					"default": "aLongRandomSeriesOfCharacters",
+					"label": "FLATNOTES_SECRET_KEY",
+					"name": "FLATNOTES_SECRET_KEY"
+				}
+			],
+			"image": "dullage/flatnotes:latest",
+			"logo": "https://raw.githubusercontent.com/spandan13/pi-hosted/master/images/flatnotes.png",
+			"name": "flatnotes",
+			"platform": "linux",
+			"ports": [
+				"8715:80/tcp"
+			],
+			"restart_policy": "unless-stopped",
+			"title": "flatnotes",
+			"type": 1,
+			"volumes": [
+				{
+					"bind": "/portainer/Files/AppData/Config/flatnotes/data",
+					"container": "/app/data"
+				}
+			],
+			"note": "<h3>Template created by Pi-Hosted Series</h3><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://github.com/Dullage/flatnotes\" target=\"_blank\">https://github.com/Dullage/flatnotes</a><br><b>Official Docker Documentation: </b><a href=\"https://hub.docker.com/r/dullage/flatnotes\" target=\"_blank\">https://hub.docker.com/r/dullage/flatnotes</a><br><br><b><a href=\"https://github.com/pi-hosted/pi-hosted/blob/master/tools/install_flatnotes.sh\" target=\"_blank\">Pre-installation script</a> must be RAN before you install: </b>wget -qO- https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/tools/install_flatnotes.sh | bash<br><br>"
 		},
 		{
 			"categories": [
@@ -1991,6 +2077,37 @@
 				}
 			],
 			"note": "<h3>Template created by Pi-Hosted Series</h3><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://github.com/hubbcaps/gazee\" target=\"_blank\">https://github.com/hubbcaps/gazee</a><br><b>Official Docker Documentation: </b><a href=\"https://hub.docker.com/r/linuxserver/gazee\" target=\"_blank\">https://hub.docker.com/r/linuxserver/gazee</a><br><br><br>"
+		},
+		{
+			"categories": [
+				"Other",
+				"Tools"
+			],
+			"description": "Ghost is a free and open source blogging platform written in JavaScript and distributed under the MIT License, designed to simplify the process of online publishing for individual bloggers as well as online publications.",
+			"env": [
+				{
+					"default": "development",
+					"label": "NODE_ENV",
+					"name": "NODE_ENV"
+				}
+			],
+			"image": "ghost:latest",
+			"logo": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/ghost.png",
+			"name": "ghost",
+			"platform": "linux",
+			"ports": [
+				"2368:2368/tcp"
+			],
+			"restart_policy": "unless-stopped",
+			"title": "Ghost",
+			"type": 1,
+			"volumes": [
+				{
+					"bind": "/portainer/Files/AppData/Config/Ghost",
+					"container": "/var/lib/ghost/content"
+				}
+			],
+			"note": "<h3>Template created by Pi-Hosted Series</h3><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://github.com/docker-library/docs/tree/master/ghost\" target=\"_blank\">https://github.com/docker-library/docs/tree/master/ghost</a><br><b>Official Docker Documentation: </b><a href=\"https://hub.docker.com/_/ghost\" target=\"_blank\">https://hub.docker.com/_/ghost</a><br><br><br>"
 		},
 		{
 			"categories": [
@@ -2541,7 +2658,7 @@
 				"Other",
 				"Tools"
 			],
-			"description": "A dead simple static HOMepage for your servER to keep your s ervices on hand, from a simple yaml configuration file.",
+			"description": "A dead simple static HOMepage for your servER to keep your services on hand, from a simple yaml configuration file.",
 			"env": [
 				{
 					"default": "1000",
@@ -2571,7 +2688,7 @@
 					"container": "/www/assets"
 				},
 				{
-					"bind": "/portainer/Files/AppData/Config/Homer",
+					"bind": "/portainer/Files/AppData/Config/Homer/config.yml",
 					"container": "/www/config.yml"
 				}
 			]
@@ -2653,6 +2770,35 @@
 			],
 			"restart_policy": "unless-stopped",
 			"title": "Influxdb 1.8.10",
+			"type": 1,
+			"volumes": [
+				{
+					"bind": "/portainer/Files/AppData/Config/Influxdb/data",
+					"container": "/var/lib/influxdb"
+				},
+				{
+					"bind": "/portainer/Files/AppData/Config/Influxdb/config",
+					"container": "/var/lib/influxdb"
+				}
+			],
+			"note": "<h3>Template created by Pi-Hosted Series</h3><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://www.influxdata.com/\" target=\"_blank\">https://www.influxdata.com/</a><br><b>Official Docker Documentation: </b><a href=\"https://docs.influxdata.com/influxdb/v2.0/install/?t=Docker\" target=\"_blank\">https://docs.influxdata.com/influxdb/v2.0/install/?t=Docker</a><br><br><br>"
+		},
+		{
+			"categories": [
+				"Other",
+				"Tools"
+			],
+			"description": "InfluxDB is an open source time series database for recording metrics, events, and analytics. You will need to add /portainer/Files/AppData/Config/Influxdb/config/influxdb.conf",
+			"hostname": "rpi-influxdb",
+			"image": "influxdb:latest",
+			"logo": "https://raw.githubusercontent.com/docker-library/docs/43d87118415bb75d7bb107683e79cd6d69186f67/influxdb/logo.png",
+			"name": "influxdb1810",
+			"platform": "linux",
+			"ports": [
+				"8086:8086/tcp"
+			],
+			"restart_policy": "unless-stopped",
+			"title": "Influxdb Latest",
 			"type": 1,
 			"volumes": [
 				{
@@ -2851,10 +2997,45 @@
 		},
 		{
 			"categories": [
+				"HomeAutomation"
+			],
+			"description": "IoBroker is a open source IoT platform written in JavaScript that easily connects smarthome components from different manufactures. With the help of plugins (called: adapters) ioBroker is able to communicate with a big variety of IoT hardware and services using different protocols and APIs.",
+			"env": [
+				{
+					"default": "1000",
+					"label": "PUID",
+					"name": "PUID"
+				},
+				{
+					"default": "1000",
+					"label": "PGID",
+					"name": "PGID"
+				}
+			],
+			"image": "buanet/iobroker:latest",
+			"logo": "https://github.com/buanet/ioBroker.docker/raw/main/docs/img/iobroker_logo.png",
+			"name": "iobroker",
+			"platform": "linux",
+			"ports": [
+				"8081:8081/tcp"
+			],
+			"restart_policy": "unless-stopped",
+			"title": "iobroker",
+			"type": 1,
+			"volumes": [
+				{
+					"bind": "/portainer/Files/AppData/Config/iobrokerdata",
+					"container": "/opt/iobroker"
+				}
+			],
+			"note": "<h3>Template created by Pi-Hosted Series</h3><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://github.com/buanet/ioBroker.docker\" target=\"_blank\">https://github.com/buanet/ioBroker.docker</a><br><b>Official Docker Documentation: </b><a href=\"https://github.com/buanet/ioBroker.docker\" target=\"_blank\">https://github.com/buanet/ioBroker.docker</a><br><br><br>"
+		},
+		{
+			"categories": [
 				"Downloaders",
 				"Tools"
 			],
-			"description": "Jackett works as a proxy server it translates queries from apps like Sonarr etc into tracker-site-specific http queries and parses the html response sending results back to the requesting software.[",
+			"description": "Jackett works as a proxy server it translates queries from apps like Sonarr etc into tracker-site-specific http queries and parses the html response sending results back to the requesting software.",
 			"env": [
 				{
 					"default": "1000",
@@ -4328,6 +4509,7 @@
 				}
 			],
 			"image": "ownyourbits/nextcloudpi-x86:latest",
+			"logo": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/nextcloud-icon.png",
 			"name": "nextcloudpi",
 			"note": "<h3>Template created by Pi-Hosted Series</h3><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://ownyourbits.com/nextcloudpi/\" target=\"_blank\">https://ownyourbits.com/nextcloudpi/</a><br><b>Official Docker Documentation: </b><a href=\"https://ownyourbits.com/2017/06/08/nextcloudpi-docker-for-raspberry-pi/\" target=\"_blank\">https://ownyourbits.com/2017/06/08/nextcloudpi-docker-for-raspberry-pi/</a><br><br><b>Extra useful script: </b><a href=\"https://github.com/pi-hosted/pi-hosted/blob/master/tools/reset_premissions_nextcloud.sh\" target=\"_blank\">reset_premissions_nextcloud.sh</a><br><br><b>Youtube Video: </b><a href=https://www.youtube.com/watch?v=E6IrT3g5Gqc&list=PL846hFPMqg3jwkxcScD1xw2bKXrJVvarc&index=9 target=\"_blank\">Novaspirit Tech - Installing Nextcloud on Raspberry Pi Docker</a><br><br>The database user is nextcloud and the database is nextcloud_db. The host of the database will be located at the bottom of the DB conotainer in portainer.",
 			"platform": "linux",
@@ -4621,6 +4803,49 @@
 		},
 		{
 			"categories": [
+				"Proxy",
+				"Tools"
+			],
+			"description": "[DEVEL] Not ready for production.  Nginx Proxy Manager v3 Develop enables you to easily forward to your websites running at home or otherwise, including free SSL, without having to know too much about Nginx or Letsencrypt.  Please see the install document at https://github.com/pi-hosted/pi-hosted/tree/master/docs installing the template",
+			"env": [
+				{
+					"default": "1000",
+					"label": "PUID",
+					"name": "PUID"
+				},
+				{
+					"default": "1000",
+					"label": "PGID",
+					"name": "PGID"
+				},
+				{
+					"default": "America/New_York",
+					"label": "TZ",
+					"name": "TZ"
+				}
+			],
+			"image": "jc21/nginx-proxy-manager:v3-develop",
+			"logo": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/proxy_mgr.png",
+			"name": "nginx-proxy-manager-v3",
+			"platform": "linux",
+			"ports": [
+				"80:80/tcp",
+				"81:81/tcp",
+				"443:443/tcp"
+			],
+			"restart_policy": "unless-stopped",
+			"title": "Nginx Proxy Manager v3 [DEVEL] NOT READY FOR USE",
+			"type": 1,
+			"volumes": [
+				{
+					"bind": "/portainer/Files/AppData/Config/nginx-proxy-manager-v3/data",
+					"container": "/data"
+				}
+			],
+			"note": "<h3>Template created by Pi-Hosted Series</h3><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://nginxproxymanager.com/\" target=\"_blank\">https://nginxproxymanager.com/</a><br><b>Official Docker Documentation: </b><a href=\"https://nginxproxymanager.com/setup/\" target=\"_blank\">https://nginxproxymanager.com/setup/</a><br><b>Pi-Hosted dedicated documentation: </b><a href=\"https://github.com/pi-hosted/pi-hosted/blob/master/docs/nginx_proxy_manager.md\" target=\"_blank\">nginx_proxy_manager.md</a><br><br><br><b>Youtube Video: </b><a href=https://www.youtube.com/watch?v=yl2Laxbqvo8&list=PL846hFPMqg3jwkxcScD1xw2bKXrJVvarc&index=10 target=\"_blank\">Novaspirit Tech - Installing Nginx Proxy Manager on Docker</a><br><br>"
+		},
+		{
+			"categories": [
 				"Other",
 				"Tools",
 				"Web"
@@ -4806,6 +5031,47 @@
 				}
 			],
 			"note": "<h3>Template created by Pi-Hosted Series</h3><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://github.com/theotherp/nzbhydra2\" target=\"_blank\">https://github.com/theotherp/nzbhydra2</a><br><b>Official Docker Documentation: </b><a href=\"https://docs.linuxserver.io/images/docker-nzbhydra2\" target=\"_blank\">https://docs.linuxserver.io/images/docker-nzbhydra2</a><br><br><br>"
+		},
+		{
+			"categories": [
+				"Other",
+				"Tools"
+			],
+			"description": "OctoPrint is an open source 3D printer controller application, which provides a web interface for the connected printers.",
+			"env": [
+				{
+					"default": "development ",
+					"label": "NODE_ENV",
+					"name": "NODE_ENV"
+				},
+				{
+					"default": "true",
+					"label": "ENABLE_MJPG_STREAMER",
+					"name": "ENABLE_MJPG_STREAMER"
+				}
+			],
+			"image": "octoprint/octoprint:latest",
+			"logo": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/octoprint.png",
+			"name": "octoprint",
+			"platform": "linux",
+			"ports": [
+				"8051:80/tcp"
+			],
+			"privileged": true,
+			"restart_policy": "unless-stopped",
+			"title": "OctoPrint",
+			"type": 1,
+			"volumes": [
+				{
+					"bind": "/portainer/Files/AppData/Config/OctoPrint",
+					"container": "/octoprint"
+				},
+				{
+					"bind": "/dev",
+					"container": "/dev"
+				}
+			],
+			"note": "<h3>Template created by Pi-Hosted Series</h3><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://octoprint.org/\" target=\"_blank\">https://octoprint.org/</a><br><b>Official Docker Documentation: </b><a href=\"https://hub.docker.com/r/octoprint/octoprint\" target=\"_blank\">https://hub.docker.com/r/octoprint/octoprint</a><br><br><br>"
 		},
 		{
 			"categories": [
@@ -4997,7 +5263,7 @@
 			"volumes": [
 				{
 					"bind": "/portainer/Files/AppData/Config/Overseerr",
-					"container": "config"
+					"container": "/config"
 				}
 			],
 			"note": "<h3>Template created by Pi-Hosted Series</h3><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://overseerr.dev/\" target=\"_blank\">https://overseerr.dev/</a><br><b>Official Docker Documentation: </b><a href=\"https://hub.docker.com/r/linuxserver/overseerr\" target=\"_blank\">https://hub.docker.com/r/linuxserver/overseerr</a><br><br><br>"
@@ -5949,6 +6215,34 @@
 		},
 		{
 			"categories": [
+				"Monitor",
+				"Tools"
+			],
+			"description": "Monitor your Raspberry Pi and Dockers using Grafana developed by oijkn. Please download grafana configs from his git https://github.com/oijkn/Docker-Raspberry-PI-Monitoring",
+			"env": [
+				{
+					"default": "15d",
+					"label": "PROMETHEUS_RETENTION",
+					"name": "PROMETHEUS_RETENTION"
+				}
+			],
+			"logo": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/rpi_monitor.png",
+			"name": "RaspberryPi-Docker-Monitor",
+			"platform": "linux",
+			"ports": [
+				"3000:3000/tcp"
+			],
+			"repository": {
+				"stackfile": "stack/raspberrypi-monitoring.yml",
+				"url": "https://github.com/pi-hosted/pi-hosted"
+			},
+			"restart_policy": "unless-stopped",
+			"title": "Raspberry Pi Docker Monitor",
+			"type": 3,
+			"note": "<h3>Template created by Pi-Hosted Series</h3><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://github.com/pi-hosted/pi-hosted/blob/master/docs/rpi_docker_monitor.md\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted/blob/master/docs/rpi_docker_monitor.md</a><br><b>Official Docker Documentation: </b><a href=\"https://github.com/pi-hosted/pi-hosted/blob/master/docs/rpi_docker_monitor.md\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted/blob/master/docs/rpi_docker_monitor.md</a><br><b>Pi-Hosted dedicated documentation: </b><a href=\"https://github.com/pi-hosted/pi-hosted/blob/master/docs/rpi_docker_monitor.md\" target=\"_blank\">rpi_docker_monitor.md</a><br><br><b><a href=\"https://github.com/pi-hosted/pi-hosted/blob/master/tools/rpi_docker_monitor.sh\" target=\"_blank\">Pre-installation script</a> must be RAN before you install: </b>wget -qO- https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/tools/rpi_docker_monitor.sh | bash<br><br><b>Youtube Video: </b><a href=https://www.youtube.com/watch?v=IoD3vFuep64&list=PL846hFPMqg3jwkxcScD1xw2bKXrJVvarc&index=8 target=\"_blank\">Novaspirit Tech - Raspberry Pi Docker Monitoring</a><br><br>"
+		},
+		{
+			"categories": [
 				"Other"
 			],
 			"description": "Rdesktop is an Ubuntu based container containing full desktop environments in officially supported flavors accessible via RDP.",
@@ -6275,7 +6569,7 @@
 					"name": "RU_REMOVE_CORE_PLUGINS"
 				}
 			],
-			"image": "linuxserver/crazymax/rtorrent-rutorrent:latest",
+			"image": "crazymax/rtorrent-rutorrent:latest",
 			"logo": "https://raw.githubusercontent.com/linuxserver/beta-templates/master/lsiodev/img/rutorrent-icon.png",
 			"name": "rutorrent",
 			"note": "<h3>Template created by Pi-Hosted Series</h3><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://github.com/Novik/ruTorrent\" target=\"_blank\">https://github.com/Novik/ruTorrent</a><br><b>Official Docker Documentation: </b><a href=\"https://github.com/crazy-max/docker-rtorrent-rutorrent\" target=\"_blank\">https://github.com/crazy-max/docker-rtorrent-rutorrent</a><br><br><br>For ruTorrent basic auth, XMLRPC through nginx and WebDAV on completed downloads, you can populate .htpasswd files with the following command:\\ndocker run --rm -it httpd:2.4-alpine htpasswd -Bbn <username> <password> >> $(pwd)/passwd/webdav.htpasswd",
@@ -6820,8 +7114,8 @@
 					"name": "end"
 				}
 			],
-			"note": "<h3>Template created by Pi-Hosted Series</h3><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://www.the-diy-life.com/\" target=\"_blank\">https://www.the-diy-life.com/</a><br><b>Official Docker Documentation: </b><a href=\"https://github.com/mklements/OLED_Stats_Docker\" target=\"_blank\">https://github.com/mklements/OLED_Stats_Docker</a><br><br><br>Run this command first to enable is2 communication! sudo raspi-config nonint do_i2c 0",
-			"image": "macley/oled_stats:latest",
+			"note": "<h3>Template created by Pi-Hosted Series</h3><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://www.the-diy-life.com/\" target=\"_blank\">https://www.the-diy-life.com/</a><br><b>Official Docker Documentation: </b><a href=\"https://github.com/mklements/OLED_Stats_Docker\" target=\"_blank\">https://github.com/mklements/OLED_Stats_Docker</a><br><br><br>Run this command first to enable is2 communication! \\nsudo raspi-config nonint do_i2c 0\\nsudo /DietPi/dietpi/func/dietpi-set_hardware i2c enable || sudo /boot/dietpi/func/dietpi-set_hardware i2c enable\\n",
+			"image": "mklements/oled_stats:latest",
 			"logo": "https://camo.githubusercontent.com/4cf4aaa1e53612347e4d48f152d6d4eea0ce93a6ecacacaa9d44061d0994b408/68747470733a2f2f7777772e7468652d6469792d6c6966652e636f6d2f77702d636f6e74656e742f75706c6f6164732f323032322f30392f3138373137323831322d64653264653635632d626433302d343065372d613835322d3264343234656463323761622e6a7067",
 			"name": "OLED_Stats",
 			"platform": "linux",
@@ -6856,7 +7150,7 @@
 					"name": "AUTH_KEY"
 				}
 			],
-			"image": "tailscale/tailscale:latest",
+			"image": "tailscale/tailscale:stable",
 			"logo": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/tailscale-icon.png",
 			"name": "tailscale",
 			"platform": "linux",
@@ -6914,6 +7208,40 @@
 				}
 			],
 			"note": "<h3>Template created by Pi-Hosted Series</h3><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://tautulli.com/\" target=\"_blank\">https://tautulli.com/</a><br><b>Official Docker Documentation: </b><a href=\"https://docs.linuxserver.io/images/docker-tautulli\" target=\"_blank\">https://docs.linuxserver.io/images/docker-tautulli</a><br><br><br>"
+		},
+		{
+			"categories": [
+				"Other",
+				"Tools",
+				"Minecraft"
+			],
+			"env": [
+				{
+					"name": "TZ",
+					"label": "TZ",
+					"default": "America/New_York",
+					"description": "Specify a timezone to use for example Europe/London"
+				}
+			],
+			"description": "[Thanos](https://github.com/aternosorg/thanos) is a tool that allows you to shrink your minecraft worlds by deleting unused chuncks.",
+			"image": "cristianeduardmihai/thanos:latest",
+			"logo": "https://raw.githubusercontent.com/novaspirit/pi-hosted/images/aternos-thanos.png",
+			"name": "Thanos",
+			"platform": "linux",
+			"restart_policy": "never",
+			"title": "Thanos",
+			"type": 1,
+			"volumes": [
+				{
+					"bind": "/portainer/Files/mc/output",
+					"container": "/output"
+				},
+				{
+					"bind": "/portainer/mc/input",
+					"container": "/watch"
+				}
+			],
+			"note": "<h3>Template created by Pi-Hosted Series</h3><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://github.com/aternosorg/thanos\" target=\"_blank\">https://github.com/aternosorg/thanos</a><br><b>Official Docker Documentation: </b><a href=\"https://github.com/aternosorg/thanos\" target=\"_blank\">https://github.com/aternosorg/thanos</a><br><br><br>"
 		},
 		{
 			"categories": [
@@ -7693,7 +8021,7 @@
 				"Tools"
 			],
 			"description": "A Docker image for Windows 2000 Advanced Server with SP4.",
-			"image": "hectormolinero/qemu-win2000:latest",
+			"image": "hectorm/qemu-win2000:latest",
 			"logo": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/win2000.png",
 			"name": "win2000",
 			"note": "<h3>Template created by Pi-Hosted Series</h3><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://github.com/hectorm/docker-qemu-win2000\" target=\"_blank\">https://github.com/hectorm/docker-qemu-win2000</a><br><b>Official Docker Documentation: </b><a href=\"https://github.com/hectorm/docker-qemu-win2000#start-an-instance\" target=\"_blank\">https://github.com/hectorm/docker-qemu-win2000#start-an-instance</a><br><br><br><b>Youtube Video: </b><a href=https://www.youtube.com/watch?v=57Gnp0424Qc&list=PL846hFPMqg3jwkxcScD1xw2bKXrJVvarc&index=13 target=\"_blank\">Novaspirit Tech - Checking out Windows 2000 Docker</a><br><br>Why? Your scientists were so preoccupied with whether or not they could, that they didn't stop to think if they should. -- Dr. Ian Malcolm",
@@ -7873,6 +8201,7 @@
 				}
 			],
 			"name": "Your Spotify",
+			"logo": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/your-spotify.png",
 			"note": "<h3>Template created by Pi-Hosted Series</h3><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://github.com/Yooooomi/your_spotify\" target=\"_blank\">https://github.com/Yooooomi/your_spotify</a><br><b>Official Docker Documentation: </b><a href=\"https://github.com/Yooooomi/your_spotify#readme\" target=\"_blank\">https://github.com/Yooooomi/your_spotify#readme</a><br><br><br>Create a Spotify App here: https://developer.spotify.com/dashboard/applications. Don't forget adding Redirect URL: http://192.168.X.Y:3081/oauth/spotify/callback under edit settings of the dashboard.",
 			"platform": "linux",
 			"repository": {
