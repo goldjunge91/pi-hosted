@@ -45,8 +45,12 @@ cat /etc/passwd
 
 all logins
 lslogins -u
+/portainer/Files/AppData/Config/Plex
 /portainer/Files/AppData/Config/"container name"
 # Ablauf
+
+list of all in one install package
+gnome-disk-utility, ntfs-3g, git
 
 1. cd Downloads
 2. sudo mkdir pi-hosted
